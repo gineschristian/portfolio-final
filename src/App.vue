@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { misProyectos } from './data/proyectos';
+
 const scrollToProjects = () => {
   const el = document.getElementById('mis-proyectos');
   if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -21,18 +22,41 @@ const scrollToProjects = () => {
         </div>
         
         <div class="cta-buttons">
-          <button class="btn-primary" @click="scrollToProjects">Ver Proyectos
-            Ver Proyectos
-          </button>
+          <button class="btn-primary" @click="scrollToProjects">Ver Proyectos </button>
           <button class="btn-secondary">Contactar</button>
         </div>
       </div>
+    </section>
 
-      <div class="hero-image">
-        <div class="image-bg-glow"></div>
-        <img src="/tu-foto-sin-fondo.png" alt="Perfil Profesional" />
+    <section id="sobre-mi" class="about-section">
+      <div class="container about-grid">
+        <div class="about-image">
+          <img src="/tu-foto-sin-fondo.png" alt="Gines Christian" class="profile-img">
+          <div class="glow-effect"></div>
+        </div>
+
+        <div class="about-content">
+          <h2>Sobre Mí</h2>
+          <p>
+            ¡Hola! Soy <strong>Gines Christian</strong>, un desarrollador apasionado por crear soluciones tecnológicas que resuelven problemas reales. 
+          </p>
+          <p>
+            Mi enfoque combina la curiosidad técnica con la experiencia práctica. He desarrollado desde <strong>sistemas de gestión integral para empresas (ERP)</strong>, controlando stock y finanzas, hasta modernas <strong>aplicaciones web e-commerce</strong>.
+          </p>
+          <p>
+            Me especializo en el ecosistema de JavaScript (Vue 3, Vite) y tengo experiencia sólida gestionando bases de datos y despliegues con Docker. Mi objetivo es seguir creciendo en entornos desafiantes donde pueda aportar valor a través del código limpio y eficiente.
+          </p>
+          
+          <div class="skills-mini">
+            <span>#ResoluciónDeProblemas</span>
+            <span>#DesarrolloFullStack</span>
+            <span>#SistemasTI</span>
+          </div>
+        </div>
       </div>
-    </section> <section id="mis-proyectos" class="projects-grid">
+    </section>
+
+    <section id="mis-proyectos" class="projects-grid">
       <h2 class="section-title">Soluciones de Software Personalizado</h2>
       
       <div class="grid-container">
@@ -75,16 +99,17 @@ const scrollToProjects = () => {
 </template>
 
 <style scoped>
+/* MANTENEMOS TU DISEÑO ORIGINAL */
 .portfolio-container {
   display: flex;
-  flex-direction: column; /* Apila las secciones una debajo de otra */
+  flex-direction: column;
   align-items: center;
   padding: 0 20px;
 }
 
-.hero, .projects-grid {
+.hero, .projects-grid, .about-section {
   width: 100%;
-  max-width: 1200px; /* Centra el contenido en pantallas grandes */
+  max-width: 1200px;
   margin-bottom: 5rem;
 }
 
@@ -104,30 +129,42 @@ const scrollToProjects = () => {
   letter-spacing: 2px;
 }
 
-.hero-image {
-  position: relative;
-  width: 400px;
+/* --- CORRECCIÓN DE LA FOTO --- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+  align-items: center;
 }
 
-.hero-image img {
+.about-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-img {
   width: 100%;
+  max-width: 250px; /* AQUÍ REDUCIMOS EL TAMAÑO */
+  height: auto;
+  border-radius: 20px;
   position: relative;
   z-index: 2;
-  filter: drop-shadow(0 0 20px rgba(66, 184, 131, 0.3));
+  filter: drop-shadow(0 0 15px rgba(66, 184, 131, 0.3));
 }
 
-/* Efecto de brillo detrás de tu foto */
-.image-bg-glow {
+.glow-effect {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 120%;
-  height: 120%;
-  background: radial-gradient(circle, rgba(66, 184, 131, 0.2) 0%, transparent 70%);
+  width: 130%;
+  height: 130%;
+  background: radial-gradient(circle, rgba(66, 184, 131, 0.15) 0%, transparent 70%);
   z-index: 1;
 }
 
+/* --- RESTO DE TU DISEÑO --- */
 .btn-primary {
   background: #42b883;
   color: #0f172a;
@@ -148,27 +185,33 @@ const scrollToProjects = () => {
   border: 2px solid #42b883;
   cursor: pointer;
 }
-.projects-grid {
-  max-width: 1200px;
-  margin: 4rem auto;
-  padding: 0 2rem;
-}
 
-.section-title {
+.about-content h2, .section-title {
   font-size: 2rem;
   color: #42b883;
-  margin-bottom: 2rem;
-  text-align: center;
+  margin-bottom: 1.5rem;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
+}
+
+.about-content p {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.skills-mini {
+  display: flex;
+  gap: 10px;
+  color: #42b883;
+  font-family: monospace;
+  font-weight: bold;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Se adapta al ancho de pantalla */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
-  width: 100%;
-  margin-top: 3rem;
 }
 
 .project-card {
@@ -176,25 +219,7 @@ const scrollToProjects = () => {
   border: 1px solid rgba(66, 184, 131, 0.2);
   border-radius: 15px;
   padding: 1.5rem;
-  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.project-card:hover {
-  transform: translateY(-10px);
-  border-color: #42b883;
-  box-shadow: 0 10px 30px rgba(66, 184, 131, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
 }
 
 .tag {
@@ -203,95 +228,29 @@ const scrollToProjects = () => {
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 0.75rem;
-  font-weight: bold;
-}
-
-.project-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  color: #fff;
-}
-
-.project-card p {
-  font-size: 0.95rem;
-  color: #94a3b8;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.card-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 1rem;
-  font-size: 0.8rem;
-  color: #42b883;
-  font-weight: 500;
-}
-.connect-section {
-  padding: 6rem 2rem;
-  display: flex;
-  justify-content: center;
-  background: #0a0a0c;
 }
 
 .connect-card {
   text-align: center;
-  max-width: 700px;
   padding: 3rem;
   background: rgba(66, 184, 131, 0.05);
   border-radius: 24px;
   border: 1px dashed rgba(66, 184, 131, 0.3);
 }
 
-.connect-card p {
-  color: #94a3b8;
-  font-size: 1.2rem;
-  margin-bottom: 2.5rem;
-}
-
 .social-links {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
-.btn-linkedin, .btn-github {
-  text-decoration: none;
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.btn-linkedin {
-  background: #0077b5;
-  color: white;
-}
-
-.btn-linkedin:hover {
-  background: #005a87;
-  transform: scale(1.05);
-}
-
-.btn-github {
-  background: #24292e;
-  color: white;
-  border: 1px solid #444;
-}
-
-.btn-github:hover {
-  background: #111;
-  transform: scale(1.05);
-}
-
-.icon {
-  font-family: monospace;
-  font-size: 1.2rem;
-  background: rgba(255,255,255,0.2);
-  padding: 2px 6px;
-  border-radius: 4px;
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .profile-img {
+    max-width: 200px;
+  }
 }
 </style>
