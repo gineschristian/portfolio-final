@@ -100,11 +100,21 @@ const scrollToProjects = () => {
 
 <style scoped>
 /* MANTENEMOS TU DISEÑO ORIGINAL */
+
+:global(body) {
+  margin: 0;
+  padding: 0;
+  background-color: #0f172a; /* El azul muy oscuro que elegimos */
+  color: white;
+}
+
 .portfolio-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0 20px;
+  min-height: 100vh; /* Asegura que el fondo cubra toda la pantalla */
+  background-color: #0f172a;
 }
 
 .hero, .projects-grid, .about-section {
